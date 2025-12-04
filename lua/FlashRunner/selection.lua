@@ -1,6 +1,6 @@
 local M = {}
 
-local Window=require("FlashRunner.window")
+local ExecutionEngine=require("FlashRunner.execution")
 
 M.notify=function(lines,ls,le)
   print(vim.inspect(lines))
@@ -21,6 +21,7 @@ M.get_visual_selection=function()
 
 -- fetch the lines
   local lines = vim.api.nvim_buf_get_lines(0, ls - 1, le, false)
+  local language="cpp" -- WARNING: hardcoded cpp here
 
  -- trim first and last lines to the selected columns
   if #lines > 0 then
@@ -31,7 +32,19 @@ M.get_visual_selection=function()
 --  print("selected lines ",vim.inspect(lines),ls,le)
 
   --M.notify(lines,ls,le)
-  Window.display_lines_in_floating_win(lines)
+  local executor=nil
+  local codeblock={body=lines,language=language}
+
+  if language== "cpp" then
+    executor=ExecutionEngine.execute_cpp_code
+  end
+
+  if not executor then
+    print("No valid executor for this language: ",language)
+  else
+    executor(codeblock)
+  end
+
 end
 
 
