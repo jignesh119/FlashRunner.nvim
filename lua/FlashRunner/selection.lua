@@ -33,10 +33,12 @@ M.get_visual_selection=function()
 
   --M.notify(lines,ls,le)
   local executor=nil
-  local codeblock={body=lines,language=language}
+  local codeblock={body=table.concat(lines,"\n").. "\n",language=language}
 
   if language== "cpp" then
     executor=ExecutionEngine.execute_cpp_code
+  elseif language=="js" then
+      executor=ExecutionEngine.execute_js_code
   end
 
   if not executor then

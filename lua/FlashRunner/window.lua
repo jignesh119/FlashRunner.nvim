@@ -16,10 +16,12 @@ function M.display_lines_in_floating_win(codeblock,output)
   vim.list_extend(content,codeblock.body)
   table.insert(content,"```")
 
-  table.insert(content,"".."#Output")
-  table.insert(content,output)
+  table.insert(content,"")
+  table.insert(content,"#Output")
+  table.insert(content,table.concat(output))
 
   vim.api.nvim_buf_set_lines(buf, 0, 500, false, content)
+  -- vim.api.nvim_buf_set_text(buf, 0, 0, -1,-1, content)
 
   local float = vim.api.nvim_open_win(buf, true, {
     relative = 'editor',
