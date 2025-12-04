@@ -88,7 +88,7 @@ local layout=create_layout()
   local header=create_float(layout.header,false)
   vim.api.nvim_buf_set_lines(header.buf,0,-1,false,{
     "",
-    "     FlashRunner - Code Execution Result",
+    "\t\t  FlashRunner - Code Execution Result ",
   })
   vim.bo[header.buf].filetype="markdown"
 

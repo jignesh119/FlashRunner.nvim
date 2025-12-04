@@ -5,8 +5,6 @@ local Selection=require("FlashRunner.selection")
 
 M.hello_world = function()
 	print("Hello! welcome to FlashRunner!!")
-  local ft=vim.bo.filetype
-  print(ft)
 end
 
 M.setup = function(opts)
@@ -17,23 +15,24 @@ M.setup = function(opts)
   -- M.options=opts
 
 
-	-- Create the user command 
     -- NOTE: user commands start with capital letters
-	vim.api.nvim_create_user_command("FlashRunner", M.hello_world, {})
-	vim.api.nvim_create_user_command("Frshow", Selection.get_visual_selection, {})
 
-	-- Use opts.keymap if provided, otherwise default to '<leader>Fr'
-	local keymap = opts.keymap or "<leader>Frh"
+  -- lets restrict users to use our default user_command
+	vim.api.nvim_create_user_command("FlashRunnerShow", Selection.get_visual_selection, {})
+
+	-- Use opts.keymap if provided, otherwise default to '<leader>Frs'
+	local keymap = opts.keymap or "<leader>Frs"
 
 	-- keymap
-	vim.keymap.set("n", keymap, M.hello_world, {
-		desc = "Say hello from FlashRunner",
-		silent = true,
-	})
+	-- vim.keymap.set("n", keymap, M.hello_world, {
+	-- 	desc = "Say hello from FlashRunner",
+	-- 	silent = true,
+	-- })
 
-  vim.keymap.set("v", "<leader>Frs", function()
-    Selection.get_visual_selection()
-  end, { silent = true })
+  vim.keymap.set("v", keymap,Selection.get_visual_selection, {
+    desc="Execute the code block under the selection, or the entire buffer if no selection is active.",
+    silent=true
+  })
 
 
 end
