@@ -147,12 +147,7 @@ print(f"Fibonacci(10): {fibonacci(10)}")
 #### C++ (with Cling)
 
 ```cpp
-#include <iostream>
-std::cout << "Hello from FlashRunner!" << std::endl;
-int factorial(int n) {
-    return n <= 1 ? 1 : n * factorial(n - 1);
-}
-std::cout << "Factorial(5): " << factorial(5) << std::endl;
+std::cout << "Hello from FlashRunner" << std::endl;
 ```
 
 ## 🛠️ Build and Development Instructions
