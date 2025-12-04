@@ -1,6 +1,7 @@
 local M={}
 
 -- @param codeblock: {body:string,language:string}
+-- @param output: string[] must not contain embeded "\n"
 function M.display_lines_in_floating_win(codeblock,output)
   local cb={}
   cb.language=codeblock.language or "cpp"

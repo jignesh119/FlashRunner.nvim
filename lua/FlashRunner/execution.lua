@@ -42,12 +42,12 @@ M.execute_js_code=function(codeblock)
   -- end
   local result=vim.system({"node",tempfile},{text=true}):wait()
   local output
+  -- print(vim.inspect(result))
 
-  if(result.stderr) then
+  if(result.stderr ~= "") then
     output=vim.split(result.stderr,"\n")
   else
-    output=result.stdout
-  end
+    output=vim.split(result.stdout,"\n")  end
 
   Window.display_lines_in_floating_win({body=body,language=codeblock.language},output)
 end

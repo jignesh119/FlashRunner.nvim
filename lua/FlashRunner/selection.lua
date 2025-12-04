@@ -21,7 +21,8 @@ M.get_visual_selection=function()
 
 -- fetch the lines
   local lines = vim.api.nvim_buf_get_lines(0, ls - 1, le, false)
-  local language="cpp" -- WARNING: hardcoded cpp here
+  local ft=vim.bo.filetype
+  local language=ft
 
  -- trim first and last lines to the selected columns
   if #lines > 0 then
@@ -35,9 +36,10 @@ M.get_visual_selection=function()
   local executor=nil
   local codeblock={body=table.concat(lines,"\n").. "\n",language=language}
 
+  -- lua, python, php, cpp, rust, go, typescript
   if language== "cpp" then
     executor=ExecutionEngine.execute_cpp_code
-  elseif language=="js" then
+  elseif language=="javascript" then
       executor=ExecutionEngine.execute_js_code
   end
 

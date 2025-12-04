@@ -5,6 +5,8 @@ local Selection=require("FlashRunner.selection")
 
 M.hello_world = function()
 	print("Hello! welcome to FlashRunner!!")
+  local ft=vim.bo.filetype
+  print(ft)
 end
 
 M.setup = function(opts)
