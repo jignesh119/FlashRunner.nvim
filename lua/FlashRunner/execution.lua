@@ -23,9 +23,11 @@ M.execute_cpp_code=function(codeblock)
   Window.display_lines_in_floating_win({body=body,language=codeblock.language},output)
 end
 
+
 -- execute code 
 -- @param codeblock: {code:string, lang:string}
-M.execute_js_code=function(codeblock)
+M.create_system_executor=function(program)
+return function(codeblock)
   -- prepare the boilerplate code
   -- compile and handle error and create output 
   local tempfile=vim.fn.tempname()
@@ -40,7 +42,7 @@ M.execute_js_code=function(codeblock)
   --     output=obj.stdout
   --   end
   -- end
-  local result=vim.system({"node",tempfile},{text=true}):wait()
+  local result=vim.system({program,tempfile},{text=true}):wait()
   local output
   -- print(vim.inspect(result))
 
@@ -51,5 +53,11 @@ M.execute_js_code=function(codeblock)
 
   Window.display_lines_in_floating_win({body=body,language=codeblock.language},output)
 end
+end
+
+
+M.execute_javascript_code=M.create_system_executor("node")
+M.execute_python_code=M.create_system_executor("python")
+-- M.execute_typescript_code=M.create_system_executor("ts-node")
 
 return M

@@ -36,11 +36,15 @@ M.get_visual_selection=function()
   local executor=nil
   local codeblock={body=table.concat(lines,"\n").. "\n",language=language}
 
-  -- lua, python, php, cpp, rust, go, typescript
+  -- lua, php, rust, go
   if language== "cpp" then
     executor=ExecutionEngine.execute_cpp_code
   elseif language=="javascript" then
-      executor=ExecutionEngine.execute_js_code
+      executor=ExecutionEngine.execute_javascript_code
+  elseif language=="python" then
+    executor=ExecutionEngine.execute_python_code
+  -- elseif language=="typescript" then
+  --   executor=ExecutionEngine.execute_typescript_code
   end
 
   if not executor then
