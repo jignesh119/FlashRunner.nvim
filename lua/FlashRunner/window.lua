@@ -1,6 +1,6 @@
 local M={}
 
--- @param codeblock: {body:string,language:string}
+-- @param codeblock: {body:string[],language:string}
 -- @param output: string[] must not contain embeded "\n"
 function M.display_lines_in_floating_win(codeblock,output)
   local cb={}
@@ -19,7 +19,8 @@ function M.display_lines_in_floating_win(codeblock,output)
 
   table.insert(content,"")
   table.insert(content,"#Output")
-  table.insert(content,table.concat(output))
+  vim.list_extend(content,output)
+  -- table.insert(content,table.concat(output))
 
   vim.api.nvim_buf_set_lines(buf, 0, 500, false, content)
   -- vim.api.nvim_buf_set_text(buf, 0, 0, -1,-1, content)

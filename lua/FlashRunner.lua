@@ -31,9 +31,9 @@ M.setup = function(opts)
 		silent = true,
 	})
 
-    vim.keymap.set("v", "<leader>Frs", function()
-        local lines = Selection.get_visual_selection()
-    end, { silent = true })
+  vim.keymap.set("v", "<leader>Frs", function()
+    Selection.get_visual_selection()
+  end, { silent = true })
 
 
 end
