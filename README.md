@@ -14,19 +14,15 @@ A blazing-fast Neovim code runner plugin for executing code snippets directly fr
 
 ## 📺 Demo
 
-<!-- TODO: Add demo GIF or video here -->
-
-_Demo coming soon..._
+![FlashRunner Demo](https://asciinema.org/a/760121)
 
 ### Screenshots
 
-<!-- TODO: Add screenshots showing:
-- Code selection and execution
-- Floating window output
-- Different language examples
--->
+![Executing javascript code](./media/js-output.png)
 
-_Screenshots coming soon..._
+![Executing python code](./media/py-output.png)
+
+![Executing cpp code](./media/cpp-output.png)
 
 ## 📋 Requirements
 
@@ -200,6 +196,8 @@ then upon each update you may want to reload plugin
 :Lazy reload FlashRunner
 ```
 
+> Follow this Blog post to understand how to build your neovim own plugin [Dev.to step-by-step guide](https://dev.to/iamgoncaloalves/how-i-developed-my-first-neovim-plugin-a-step-by-step-guide-1lcb)
+
 ### Testing the Plugin
 
 1. **Open Neovim** in the project directory
@@ -292,4 +290,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- Heavily inspired by none other than teej[https://github.com/tjdevries] (nvim gawd)
+- Heavily inspired by none other than [teej](https://github.com/tjdevries) (nvim gawd)
