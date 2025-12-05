@@ -216,3 +216,5 @@ then upon each update you may want to reload plugin
 ##  Acknowledgments
 
 - Heavily inspired by none other than [teej](https://github.com/tjdevries) (nvim gawd)
+ 
+P.S AI assited in writing this readme
