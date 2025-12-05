@@ -14,7 +14,7 @@ A blazing-fast Neovim code runner plugin for executing code snippets directly fr
 
 ## 📺 Demo
 
-![FlashRunner Demo](https://asciinema.org/a/760121)
+[![FlashRunner Demo](https://asciinema.org/a/760121.svg)](https://asciinema.org/a/760121)
 
 ### Screenshots
 
