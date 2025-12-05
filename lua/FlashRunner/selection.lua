@@ -9,7 +9,7 @@ end
 -- get selected lines or full buffer content 
 M.get_selection=function ()
   local mode=vim.api.nvim_get_mode()
-  if mode== 'v' or mode=='V' or mode =="\22" then
+  if mode.mode== 'v' or mode.mode=='V' or mode.mode =="\22" then
     local srow=vim.api.nvim_buf_get_mark(0,'<')[1]
     local scol=vim.api.nvim_buf_get_mark(0,'<')[2]
     local erow=vim.api.nvim_buf_get_mark(0,'>')[1]

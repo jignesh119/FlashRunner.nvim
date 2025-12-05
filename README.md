@@ -89,7 +89,7 @@ require('FlashRunner').setup()
 
 ```lua
 require('FlashRunner').setup({
-  keymap = "<leader>Frs", -- Default keymap for visual mode execution
+  keymap = "<leader>Fr", -- Default keymap for visual mode execution
 })
 ```
 
@@ -112,7 +112,7 @@ require('FlashRunner').setup({
 ### Basic Usage
 
 1. **Select code** in visual mode (`v`, `V`, or `Ctrl+v`)
-2. **Press the keymap** (default: `<leader>Frs`)
+2. **Press the keymap** (default: `<leader>Fr`)
 3. **View results** in the floating window
 4. **Press `q`** to close the output window
 
@@ -208,7 +208,7 @@ then upon each update you may want to reload plugin
    ```vim
    :lua require('FlashRunner').setup()
    ```
-3. **Test with sample code** in supported languages with your own keymap(default is <leader>Frs)
+3. **Test with sample code** in supported languages with your own keymap(default is <leader>Fr)
 
 ### Shell Script Customization
 

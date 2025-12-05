@@ -21,7 +21,7 @@ M.setup = function(opts)
 	vim.api.nvim_create_user_command("FlashRunnerShow", Selection.get_visual_selection, {})
 
 	-- Use opts.keymap if provided, otherwise default to '<leader>Frs'
-	local keymap = opts.keymap or "<leader>Frs"
+	local keymap = opts.keymap or "<leader>Fr"
 
 	-- keymap
 	-- vim.keymap.set("n", keymap, M.hello_world, {
