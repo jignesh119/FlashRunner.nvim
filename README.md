@@ -4,15 +4,15 @@ A blazing-fast Neovim code runner plugin for executing code snippets directly fr
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-## ✨ Features
+##  Features
 
 - **Multi-language support**: C++, JavaScript, Python
 - **Smart selection**: Runs the code block you heroically selected, or just bulldozes through the whole buffer if you forgot to select anything. Because who needs precision anyway?
 - **Beautiful UI**: Output floating window with mesmerizing markdown rendering
 - **Asynchronous execution**: Non-blocking code execution
-- **Clean**: Zaps those pesky temp files into oblivion, so you can pretend you’re organized.
+- **Clean**: Just forget about temp file storage, you're sorted!
 
-## 📺 Demo
+##  Demo
 
 [![FlashRunner Demo](https://asciinema.org/a/760121.svg)](https://asciinema.org/a/760121)
 
@@ -24,13 +24,15 @@ A blazing-fast Neovim code runner plugin for executing code snippets directly fr
 
 ![Executing cpp code](./media/cpp-output.png)
 
-## 📋 Requirements
+##  Requirements
+
+The interpreters/executables must be available on your path.
 
 ### Core Dependencies
 
 - **Neovim** >= 0.8.0
-- **Node.js** (for JavaScript execution)
-- **Python** (for Python execution)
+- **Node.js** (for JavaScript)
+- **Python** (for Python)
 
 ### C++ Support (Optional but Recommended)
 
@@ -43,7 +45,7 @@ A blazing-fast Neovim code runner plugin for executing code snippets directly fr
 
 ```
 
-## 📦 Installation
+##  Installation
 
 ### Using [lazy.nvim](https://github.com/folke/lazy.nvim)
 
@@ -79,7 +81,7 @@ Then add to your `init.lua`:
 require('FlashRunner').setup()
 ```
 
-## ⚙️ Configuration
+##  Configuration
 
 ### Default Configuration
 
@@ -103,52 +105,25 @@ require('FlashRunner').setup({
 <!-- }) -->
 <!-- ``` -->
 
-## 🚀 Usage
+##  Usage
 
-### Basic Usage
+### regular
 
 1. **Select code** in visual mode (`v`, `V`, or `Ctrl+v`)
 2. **Press the keymap** (default: `<leader>Fr`)
 3. **View results** in the floating window
 4. **Press `q`** to close the output window
 
-### Alternative: Command Usage
+### Alternative: user_command based 
 
 ```vim
 :FlashRunnerShow
 ```
 
-### Language-Specific Examples
 
-#### JavaScript
+##  Build and Development Instructions
 
-```javascript
-console.log("Hello from FlashRunner!");
-const sum = (a, b) => a + b;
-console.log(sum(5, 3));
-```
-
-#### Python
-
-```python
-print("Hello from FlashRunner!")
-def fibonacci(n):
-    if n <= 1:
-        return n
-    return fibonacci(n-1) + fibonacci(n-2)
-
-print(f"Fibonacci(10): {fibonacci(10)}")
-```
-
-#### C++ (with Cling)
-
-```cpp
-std::cout << "Hello from FlashRunner" << std::endl;
-```
-
-## 🛠️ Build and Development Instructions
-
-### Setting Up Development Environment
+### Set Up Dev Environment
 
 1. **Clone the repository**:
 
@@ -172,8 +147,10 @@ std::cout << "Hello from FlashRunner" << std::endl;
    brew install node python cling             # macOS
    ```
 
-4. **Link plugin for development**:
+4. **Link/Register plugin for development**:
    you can load the plugin from a local directory using your plugin manager.
+   
+   #### Using [lazy.nvim](https://github.com/folke/lazy.nvim)
 
 ```lua
 return {
@@ -198,79 +175,35 @@ then upon each update you may want to reload plugin
 
 > Follow this Blog post to understand how to build your neovim own plugin [Dev.to step-by-step guide](https://dev.to/iamgoncaloalves/how-i-developed-my-first-neovim-plugin-a-step-by-step-guide-1lcb)
 
-### Testing the Plugin
 
-1. **Open Neovim** in the project directory
 
-2. **Set up the plugin**:
-   ```vim
-   :lua require('FlashRunner').setup()
-   ```
-3. **Test with sample code** in supported languages with your own keymap(default is <leader>Fr)
-
-### Shell Script Customization
-
-The C++ execution uses a bash script (`lua/FlashRunner/cling-runner.sh`). To modify:
-
-1. **Edit the script**:
-
-   ```bash
-   vim lua/FlashRunner/cling-runner.sh
-   ```
-
-2. **Key variables to customize**:
-
-   - `TIMEOUT_SECONDS`: Execution timeout (default: 5)
-   - Cling command and options
-   - Output formatting
-
-3. **Test the script directly**:
-   ```bash
-   echo 'std::cout << "test" << std::endl;' | ./lua/FlashRunner/cling-runner.sh
-   ```
-
-### Adding New Language Support
-
-To add support for a new language:
-
-1. **Add executor in `execution.lua`**:
-
-   ```lua
-   M.execute_newlang_code = M.create_system_executor("interpreter-command")
-   ```
-
-2. **Update language detection in `selection.lua`**:
-   ```lua
-   elseif language == "newlang" then
-     executor = ExecutionEngine.execute_newlang_code
-   ```
-
-## 🔧 Troubleshooting
+##  Troubleshooting
 
 ### Common Issues
 
 1. **"No valid executor for this language"**
 
+   - We currently support C++, JavaScript, Python
    - Ensure the file has the correct filetype (`:set filetype?`)
    - Verify language support in `selection.lua`
-   - We currently support C++, JavaScript, Python
+   
 
-2. **C++ execution fails**
+3. **C++ execution fails**
 
    - Install Cling interpreter
    - Check if `cling-runner.sh` is executable
    - Verify the script path in configuration
 
-3. **JavaScript/Python execution fails**
+4. **JavaScript/Python execution fails**
 
    - Ensure Node.js/Python is installed and **in PATH**
    - Test with `node --version` or `python --version`
 
-4. **Floating window doesn't appear**
+5. **Floating window doesn't appear**
    - Check for errors with `:messages`
    - Ensure Neovim version >= 0.8.0
 
-## 🗺️ Roadmap
+##  Todo
 
 - [ ] **RPC Integration**: Handle interpretation in different programming languages
 - [ ] **TypeScript Support**: Add ts-node executor
@@ -280,14 +213,6 @@ To add support for a new language:
 - [ ] **Custom Executors**: User-defined execution commands
 - [ ] **Integration**: LSP integration for better error reporting
 
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a PR.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - Heavily inspired by none other than [teej](https://github.com/tjdevries) (nvim gawd)
